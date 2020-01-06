@@ -25,11 +25,22 @@ static int print_help(int ac, char **av)
     return (1);
 }
 
+static int valid_args(int ac, char **av)
+{
+    if (ac != 3 || !my_str_isnum(av[1]) || !my_str_isnum(av[2]))
+        return (0);
+    if (my_getnbr(av[1]) <= 1 || my_getnbr(av[1]) >= 100)
+        return (0);
+    if (my_getnbr(av[2]) <= 0)
+        return (0);
+    return (1);
+}
+
 int main(int ac, char *av[])
 {
     if (print_help(ac, av))
         return (0);
-    if (ac != 3)
+    if (!valid_args(ac, av))
         return (84);
-    return (0);
+    return (matchstick(my_getnbr(av[1]), my_getnbr(av[2])));
 }

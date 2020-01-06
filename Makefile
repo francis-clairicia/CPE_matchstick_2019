@@ -7,13 +7,17 @@
 
 MAIN		=	main.c
 
-#SRC_DIR		=	src
+SRC_DIR		=	src
 
-#SRC_NO_TEST	=	$(SRC_DIR)/
+SRC_NO_TEST	=	$(SRC_DIR)/matchstick.c			\
+				$(SRC_DIR)/get_input.c
 
-#SRC_TEST	=	$(SRC_DIR)/
+SRC_TEST	=	$(SRC_DIR)/gameboard.c			\
+				$(SRC_DIR)/print_gameboard.c	\
+				$(SRC_DIR)/remove_matches.c		\
+				$(SRC_DIR)/error.c
 
-#SRC			=	$(SRC_NO_TEST) $(SRC_TEST)
+SRC			=	$(SRC_NO_TEST) $(SRC_TEST)
 
 CFLAGS		=	-I./include/ -Wall -Wextra
 
