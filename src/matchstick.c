@@ -33,7 +33,7 @@ int matchstick(int nb_lines, int max_nb_matches)
             ia_playing(gameboard, &input);
         else if (output != 0 || !get_input(&input, gameboard))
             break;
-        remove_matches(players[active_player], gameboard, input);
+        remove_matches(gameboard, input);
     }
     free_map(gameboard.map, gameboard.nb_lines);
     return (output);

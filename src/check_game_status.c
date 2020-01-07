@@ -7,7 +7,7 @@
 
 #include "matchstick.h"
 
-int check_game_status(char const *player, gameboard_t gameboard)
+int check_game_status(char const *player_who_wins, gameboard_t gameboard)
 {
     int i = 0;
     int status = 0;
@@ -17,12 +17,13 @@ int check_game_status(char const *player, gameboard_t gameboard)
             return (status);
         i += 1;
     }
-    if (my_strcmp(player, "Player") == 0) {
+    if (my_strcmp(player_who_wins, "Player") == 0) {
         my_putstr("I lost... snif... but I'll get you next time!!\n");
         status = 1;
-    } else {
+    } else if (my_strcmp(player_who_wins, "AI") == 0) {
         my_putstr("You lost, too bad...\n");
         status = 2;
-    }
+    } else
+        return (-1);
     return (status);
 }

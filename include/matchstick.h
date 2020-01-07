@@ -26,9 +26,10 @@ typedef struct input
 
 int matchstick(int nb_lines, int max_nb_matches);
 int get_input(input_t *input, gameboard_t gameboard);
-int get_nb_sticks(char *line);
-void remove_matches(char const *player, gameboard_t gb, input_t input);
-int check_game_status(char const *player, gameboard_t gameboard);
+int get_nb_sticks(char **map, int line_index);
+void print_action(char const *player, input_t input);
+void remove_matches(gameboard_t gb, input_t input);
+int check_game_status(char const *player_who_wins, gameboard_t gameboard);
 
 int init_gameboard(gameboard_t *gb, int nb_lines, int max_nb_matches);
 void print_gameboard(gameboard_t gameboard);

@@ -17,8 +17,8 @@ static int get_line(input_t *input, int nb_lines)
         return (-1);
     if (my_strlen(line) == 0 || !my_str_isnum(line))
         return (error_invalid_input(line));
-    input->line = my_getnbr(line) - 1;
-    if (input->line < 0 || input->line >= nb_lines)
+    input->line = my_getnbr(line);
+    if (input->line < 1 || input->line > nb_lines)
         return (error_line_out_of_range(line));
     free(line);
     return (1);
@@ -56,7 +56,7 @@ int get_input(input_t *input, gameboard_t gb)
             return (0);
         else if (!valid)
             continue;
-        matches = get_nb_sticks(gb.map[input->line]);
+        matches = get_nb_sticks(gb.map, input->line);
         valid = get_matches(input, matches, gb.max_nb_matches);
         if (valid < 0)
             return (0);
@@ -64,5 +64,6 @@ int get_input(input_t *input, gameboard_t gb)
             continue;
         break;
     }
+    print_action("Player", *input);
     return (1);
 }

@@ -66,8 +66,6 @@ void free_map(char **map, int nb_lines)
 {
     int i = 0;
 
-    if (map == NULL)
-        return;
     while (i < nb_lines) {
         free(map[i]);
         i += 1;

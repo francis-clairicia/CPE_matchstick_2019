@@ -15,12 +15,14 @@ SRC_NO_TEST	=	$(SRC_DIR)/matchstick.c			\
 SRC_TEST	=	$(SRC_DIR)/gameboard.c			\
 				$(SRC_DIR)/print_gameboard.c	\
 				$(SRC_DIR)/remove_matches.c		\
-				$(SRC_DIR)/nb_sticks.c			\
+				$(SRC_DIR)/get_nb_sticks.c			\
 				$(SRC_DIR)/error.c				\
-				$(SRC_DIR)/check_game_status.c	\
-				$(SRC_DIR)/ia.c
+				$(SRC_DIR)/print_action.c		\
+				$(SRC_DIR)/check_game_status.c
 
-SRC			=	$(SRC_NO_TEST) $(SRC_TEST)
+SRC_IA		=	$(SRC_DIR)/ia/play.c
+
+SRC			=	$(SRC_NO_TEST) $(SRC_TEST) $(SRC_IA)
 
 CFLAGS		=	-I./include/ -Wall -Wextra
 
