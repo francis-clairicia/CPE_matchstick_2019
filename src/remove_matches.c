@@ -13,7 +13,7 @@ static void print_action(char const *player, input_t input)
     my_putstr(" removed ");
     my_put_nbr(input.matches);
     my_putstr(" match(es) from line ");
-    my_put_nbr(input.line);
+    my_put_nbr(input.line + 1);
     my_putchar('\n');
 }
 

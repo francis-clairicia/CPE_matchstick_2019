@@ -45,18 +45,6 @@ static int get_matches(input_t *input, int nb_matches, int max_match)
     return (1);
 }
 
-static int nb_sticks(char *line)
-{
-    int i = 0;
-    int count = 0;
-
-    while (line[i] != '\0') {
-        count += (line[i] == '|');
-        i += 1;
-    }
-    return (count);
-}
-
 int get_input(input_t *input, gameboard_t gb)
 {
     int valid;
@@ -68,7 +56,7 @@ int get_input(input_t *input, gameboard_t gb)
             return (0);
         else if (!valid)
             continue;
-        matches = nb_sticks(gb.map[input->line]);
+        matches = get_nb_sticks(gb.map[input->line]);
         valid = get_matches(input, matches, gb.max_nb_matches);
         if (valid < 0)
             return (0);

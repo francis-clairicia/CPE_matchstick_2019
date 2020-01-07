@@ -15,7 +15,10 @@ SRC_NO_TEST	=	$(SRC_DIR)/matchstick.c			\
 SRC_TEST	=	$(SRC_DIR)/gameboard.c			\
 				$(SRC_DIR)/print_gameboard.c	\
 				$(SRC_DIR)/remove_matches.c		\
-				$(SRC_DIR)/error.c
+				$(SRC_DIR)/nb_sticks.c			\
+				$(SRC_DIR)/error.c				\
+				$(SRC_DIR)/check_game_status.c	\
+				$(SRC_DIR)/ia.c
 
 SRC			=	$(SRC_NO_TEST) $(SRC_TEST)
 
