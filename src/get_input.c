@@ -50,6 +50,7 @@ int get_input(input_t *input, gameboard_t gb)
     int valid;
     int matches;
 
+    my_putstr("\nYour turn:\n");
     while (1) {
         valid = get_line(input, gb.nb_lines);
         if (valid < 0)
