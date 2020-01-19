@@ -11,9 +11,9 @@
 Test(get_nb_sticks, count_how_many_sticks_are_in_a_line)
 {
     char *map[] = {
-        " | | | ",
+        "|||",
         " | ",
-        "         ",
+        "   ",
     };
 
     cr_expect_eq(get_nb_sticks(map, 1), 3);

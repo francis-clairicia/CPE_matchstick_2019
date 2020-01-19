@@ -22,13 +22,13 @@ static void get_sticks(gameboard_t gameboard, int *nb_sticks)
 static void full_random_strategy(gameboard_t gameboard, input_t *input,
     int *nb_sticks)
 {
-    int max = gameboard.max_nb_matches;
-
-    srandom(time(0));
-    input->line = 0;
-    while (nb_sticks[input->line] == 0)
+    srandom(time(NULL));
+    do
         input->line = (random() % gameboard.nb_lines) + 1;
-    while ((input->matches = (random() % nb_sticks[input->line]) + 1) > max);
+    while (nb_sticks[input->line] == 0);
+    do
+        input->matches = (random() % nb_sticks[input->line]) + 1;
+    while (input->matches > gameboard.max_nb_matches);
 }
 
 void ia_playing(gameboard_t gameboard, input_t *input)
@@ -36,7 +36,6 @@ void ia_playing(gameboard_t gameboard, input_t *input)
     int nb_lines = gameboard.nb_lines;
     int nb_sticks[nb_lines + 1];
 
-    my_putstr("\nAI's turn...\n");
     get_sticks(gameboard, nb_sticks);
     full_random_strategy(gameboard, input, nb_sticks);
     print_action("AI", *input);

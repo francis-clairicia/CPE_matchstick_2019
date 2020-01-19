@@ -7,20 +7,18 @@
 
 MAIN		=	main.c
 
-SRC_DIR		=	src
+SRC_NO_TEST	=	src/matchstick.c		\
+				src/get_player_input.c
 
-SRC_NO_TEST	=	$(SRC_DIR)/matchstick.c			\
-				$(SRC_DIR)/get_input.c
+SRC_TEST	=	src/gameboard.c			\
+				src/print_gameboard.c	\
+				src/remove_matches.c	\
+				src/get_nb_sticks.c		\
+				src/error.c				\
+				src/print_action.c		\
+				src/check_game_status.c
 
-SRC_TEST	=	$(SRC_DIR)/gameboard.c			\
-				$(SRC_DIR)/print_gameboard.c	\
-				$(SRC_DIR)/remove_matches.c		\
-				$(SRC_DIR)/get_nb_sticks.c			\
-				$(SRC_DIR)/error.c				\
-				$(SRC_DIR)/print_action.c		\
-				$(SRC_DIR)/check_game_status.c
-
-SRC_IA		=	$(SRC_DIR)/ia/play.c
+SRC_IA		=	src/ia/play.c
 
 SRC			=	$(SRC_NO_TEST) $(SRC_TEST) $(SRC_IA)
 

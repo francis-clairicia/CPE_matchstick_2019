@@ -12,7 +12,8 @@
 Test(remove_matches, remove_matches_from_a_line)
 {
     gameboard_t gameboard;
-    char expected_map[] = "***********\n"
+    char expected_map[] =
+        "***********\n"
         "*         *\n"
         "*   |||   *\n"
         "*  |||||  *\n"

@@ -5,17 +5,24 @@
 ** Display a string
 */
 
-#include <my.h>
+#include <unistd.h>
+#include <stddef.h>
+
+int my_strlen(char const *str);
+
+static int putstr_in_fd(int fd, char const *str)
+{
+    if (str == NULL)
+        return (putstr_in_fd(fd, "NULL"));
+    return (write(fd, str, my_strlen(str)) != -1);
+}
 
 int my_putstr(char const *str)
 {
-    int i = 0;
+    return (putstr_in_fd(1, str));
+}
 
-    if (str == NULL)
-        return (my_putstr("NULL"));
-    while (str[i] != '\0') {
-        my_putchar(str[i]);
-        i += 1;
-    }
-    return (0);
+int my_putstr_error(char const *str)
+{
+    return (putstr_in_fd(2, str));
 }

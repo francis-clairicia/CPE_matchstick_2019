@@ -45,11 +45,11 @@ Test(error_not_enought_matches, called_when_the_input_was_invalid)
     cr_assert_stdout_eq_str(error);
 }
 
-Test(error_too_much_matches, called_when_the_input_was_invalid)
+Test(error_too_many_matches, called_when_the_input_was_invalid)
 {
     char error[] = "Error: you cannot remove more than 5 matches per turn\n";
 
     cr_redirect_stdout();
-    error_too_much_matches(NULL, 5);
+    error_too_many_matches(NULL, 5);
     cr_assert_stdout_eq_str(error);
 }

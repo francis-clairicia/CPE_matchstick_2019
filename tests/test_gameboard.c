@@ -25,7 +25,8 @@ Test(init_gameboard, fill_the_gameboard_structure)
 Test(print_gameboard, print_the_matchstick_gameboard)
 {
     gameboard_t gameboard;
-    char expected_map[] = "***********\n"
+    char expected_map[] =
+        "***********\n"
         "*    |    *\n"
         "*   |||   *\n"
         "*  |||||  *\n"

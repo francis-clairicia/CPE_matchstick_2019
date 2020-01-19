@@ -24,10 +24,7 @@ void print_gameboard(gameboard_t gameboard)
 
     print_horizontal_side(gameboard.nb_cols);
     while (i < gameboard.nb_lines) {
-        my_putchar('*');
-        my_putstr(gameboard.map[i]);
-        my_putchar('*');
-        my_putchar('\n');
+        my_printf("*%s*\n", gameboard.map[i]);
         i += 1;
     }
     print_horizontal_side(gameboard.nb_cols);

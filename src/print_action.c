@@ -9,10 +9,8 @@
 
 void print_action(char const *player, input_t input)
 {
-    my_putstr(player);
-    my_putstr(" removed ");
-    my_put_nbr(input.matches);
-    my_putstr(" match(es) from line ");
-    my_put_nbr(input.line);
-    my_putchar('\n');
+    int match = input.matches;
+    int line = input.line;
+
+    my_printf("%s removed %d match(es) from line %d\n", player, match, line);
 }
