@@ -9,21 +9,14 @@
 
 static int change_active_player(int player)
 {
-    char *player_turn[] = {
-        "Your turn:",
-        "AI's turn..."
-    };
-
     player += (player == 1) ? -1 : 1;
-    my_printf("\n%s\n", player_turn[player]);
     return (player);
 }
 
-static int play(char const *player, int gameplay_status,
+static int play(char const *player, char const *turn,
     gameboard_t gameboard, input_t input)
 {
-    if (gameplay_status != 0)
-        return (1);
+    my_printf("\n%s\n", turn);
     if (my_strcmp(player, "AI") == 0)
         ia_playing(gameboard, &input);
     else if (!get_player_input(&input, gameboard))
@@ -34,20 +27,22 @@ static int play(char const *player, int gameplay_status,
 
 int matchstick(int nb_lines, int max_nb_matches)
 {
+    char *players[] = {"Player", "AI"};
+    char *turn[] = {"Your turn:", "AI's turn..."};
+    int active = -1;
     int output = 0;
     int quit_game = 0;
     gameboard_t gameboard;
     input_t input;
-    char *players[] = {"Player", "AI"};
-    int active_player = -1;
 
     if (!init_gameboard(&gameboard, nb_lines, max_nb_matches))
         return (84);
-    while (!quit_game) {
+    while (!quit_game && output == 0) {
         print_gameboard(gameboard);
-        active_player = change_active_player(active_player);
-        output = check_game_status(players[active_player], gameboard);
-        quit_game = play(players[active_player], output, gameboard, input);
+        active = change_active_player(active);
+        output = check_game_status(players[active], gameboard);
+        if (output == 0)
+            quit_game = play(players[active], turn[active], gameboard, input);
     }
     free_map(gameboard.map, gameboard.nb_lines);
     return (output);

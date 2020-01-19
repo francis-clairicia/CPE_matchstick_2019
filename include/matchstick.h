@@ -40,7 +40,7 @@ void free_map(char **map, int nb_lines);
 int print_error_and_returns(char const *error, int status);
 int error_invalid_input(char *line);
 int error_line_out_of_range(char *line);
-int error_not_enought_matches(char *line);
+int error_not_enough_matches(char *line);
 int error_at_least_one_match(char *line);
 int error_too_many_matches(char *line, int max_nb_matches);
 

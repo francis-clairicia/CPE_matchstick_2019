@@ -21,7 +21,7 @@ int error_line_out_of_range(char *line)
     return (0);
 }
 
-int error_not_enought_matches(char *line)
+int error_not_enough_matches(char *line)
 {
     free(line);
     my_printf("Error: not enough matches on this line\n");

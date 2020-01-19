@@ -36,12 +36,12 @@ Test(error_at_least_one_match, called_when_the_input_was_invalid)
     cr_assert_stdout_eq_str(error);
 }
 
-Test(error_not_enought_matches, called_when_the_input_was_invalid)
+Test(error_not_enough_matches, called_when_the_input_was_invalid)
 {
     char error[] = "Error: not enough matches on this line\n";
 
     cr_redirect_stdout();
-    error_not_enought_matches(NULL);
+    error_not_enough_matches(NULL);
     cr_assert_stdout_eq_str(error);
 }
 

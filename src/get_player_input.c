@@ -38,15 +38,15 @@ static int get_matches(input_t *input, int nb_matches, int max_match)
     if (input->matches > max_match)
         return (error_too_many_matches(line, max_match));
     if (input->matches > nb_matches)
-        return (error_not_enought_matches(line));
+        return (error_not_enough_matches(line));
     free(line);
     return (1);
 }
 
 int get_player_input(input_t *input, gameboard_t gb)
 {
-    int valid;
-    int matches;
+    int valid = 0;
+    int matches = 0;
 
     while (1) {
         valid = get_line(input, gb.nb_lines);
