@@ -33,7 +33,7 @@ static int get_matches(input_t *input, int nb_matches, int max_match)
     if (my_strlen(line) == 0 || !my_str_isnum(line))
         return (error_invalid_input(line));
     input->matches = my_getnbr(line);
-    if (input->matches < 0)
+    if (input->matches <= 0)
         return (error_at_least_one_match(line));
     if (input->matches > max_match)
         return (error_too_many_matches(line, max_match));
