@@ -21,7 +21,7 @@ void remove_matches(gameboard_t gb, input_t input)
     int index_pipe = search_match_to_the_right(gb.map[input.line - 1]);
     int i = 0;
 
-    while (i < input.matches) {
+    while (i < input.matches && index_pipe >= 0) {
         gb.map[input.line - 1][index_pipe] = ' ';
         i += 1;
         index_pipe -= 1;

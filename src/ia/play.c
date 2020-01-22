@@ -8,35 +8,32 @@
 #include <time.h>
 #include "matchstick.h"
 
-static void get_sticks(gameboard_t gameboard, int *nb_sticks)
+static int get_sticks(gameboard_t gameboard, int *nb_sticks)
 {
-    int i = 0;
+    int i = 1;
+    int nb_lines_with_sticks = 0;
 
     nb_sticks[0] = 0;
-    while (i < gameboard.nb_lines) {
-        nb_sticks[i + 1] = get_nb_sticks(gameboard.map, i + 1);
+    while (i <= gameboard.nb_lines) {
+        nb_sticks[i] = get_nb_sticks(gameboard.map, i);
+        nb_lines_with_sticks += (nb_sticks[i] > 0);
         i += 1;
     }
-}
-
-static void full_random_strategy(gameboard_t gameboard, input_t *input,
-    int *nb_sticks)
-{
-    srandom(time(NULL));
-    do
-        input->line = (random() % gameboard.nb_lines) + 1;
-    while (nb_sticks[input->line] == 0);
-    do
-        input->matches = (random() % nb_sticks[input->line]) + 1;
-    while (input->matches > gameboard.max_nb_matches);
+    nb_sticks[i] = END_OF_INT_TAB;
+    return (nb_lines_with_sticks);
 }
 
 void ia_playing(gameboard_t gameboard, input_t *input)
 {
     int nb_lines = gameboard.nb_lines;
-    int nb_sticks[nb_lines + 1];
+    int max_matches = gameboard.max_nb_matches;
+    int nb_sticks[nb_lines + 2];
 
-    get_sticks(gameboard, nb_sticks);
-    full_random_strategy(gameboard, input, nb_sticks);
+    if (get_sticks(gameboard, nb_sticks) == 1)
+        play_single_line(input, nb_sticks, max_matches);
+    else if (!nim_sum_strategy(input, nb_sticks, max_matches)) {
+        input->line = random_line(nb_lines, nb_sticks);
+        input->matches = random_match(nb_sticks[input->line], max_matches);
+    }
     print_action("AI", *input);
 }

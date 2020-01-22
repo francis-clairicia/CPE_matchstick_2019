@@ -7,18 +7,25 @@
 
 MAIN		=	main.c
 
-SRC_NO_TEST	=	src/matchstick.c		\
+SRC_NO_TEST	=	src/matchstick.c							\
 				src/get_player_input.c
 
-SRC_TEST	=	src/gameboard.c			\
-				src/print_gameboard.c	\
-				src/remove_matches.c	\
-				src/get_nb_sticks.c		\
-				src/error.c				\
-				src/print_action.c		\
+SRC_TEST	=	src/gameboard.c								\
+				src/print_gameboard.c						\
+				src/remove_matches.c						\
+				src/get_nb_sticks.c							\
+				src/error.c									\
+				src/print_action.c							\
 				src/check_game_status.c
 
-SRC_IA		=	src/ia/play.c
+SRC_IA		=	src/ia/play.c								\
+				src/ia/single_line.c						\
+				src/ia/random.c								\
+				src/ia/nim_sum/nim_sum_strategy.c			\
+				src/ia/nim_sum/int_array.c					\
+				src/ia/nim_sum/get_balance.c				\
+				src/ia/nim_sum/balance_gameboard.c			\
+				src/ia/nim_sum/find_largest_balance.c
 
 SRC			=	$(SRC_NO_TEST) $(SRC_TEST) $(SRC_IA)
 
