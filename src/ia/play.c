@@ -32,8 +32,7 @@ void ia_playing(gameboard_t gameboard, input_t *input)
 
     if (nb_lines_with_sticks == 1)
         play_single_line(input, nb_sticks, max_matches);
-    else if (nb_lines_with_sticks > 4
-    || !nim_sum_strategy(input, nb_sticks, max_matches)
+    else if (!nim_sum_strategy(input, nb_sticks, max_matches)
     || input->matches <= 0) {
         input->line = random_line(nb_lines, nb_sticks);
         input->matches = random_match(nb_sticks[input->line], max_matches);
