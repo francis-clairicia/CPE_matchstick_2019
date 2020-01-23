@@ -29,7 +29,6 @@ static int get_default_matches(int value, int largest_u)
         if (value & mask)
             matches += mask;
         mask = mask << 1;
-        my_printf("New value: %.4b\nMask: %.4b\n", value, mask);
     }
     return (matches);
 }
@@ -38,9 +37,6 @@ static void next_matchstick_line(int const nb_sticks[], int *line, int l_u)
 {
     do {
         *line += 1;
-        my_printf("Line %d in binary: %.4b\n", *line, nb_sticks[*line]);
-        my_printf("Largest unbalanced: %.4b\n", l_u);
-        my_printf("Result with mask: %.4b\n", (nb_sticks[*line] & l_u));
     } while ((nb_sticks[*line] & l_u) == 0);
 }
 
@@ -53,7 +49,6 @@ static int get_matches(int nb_sticks[], int *line, int largest_u)
 
     nb_sticks[*line] -= matches;
     while ((balance = get_balance(nb_sticks)) != 0) {
-        my_printf("Balance: %.4b\n", balance);
         nb_sticks[*line] -= 1;
         matches += 1;
         if (nb_sticks[*line] == 0) {
@@ -62,12 +57,10 @@ static int get_matches(int nb_sticks[], int *line, int largest_u)
             save_nb_sticks = nb_sticks[*line];
             matches = default_matches;
             nb_sticks[*line] -= matches;
-            my_printf("Line: %d (removed %d matches)\n", nb_sticks[*line], matches);
         }
         if (nb_sticks[*line] < 0)
             return (-1);
     }
-    my_printf("Final Balance: %.4b\n", balance);
     return (matches);
 }
 
@@ -80,7 +73,6 @@ int balance_gameboard(input_t *input, int nb_sticks[], int max_matches)
 
     if (line < 0)
         return (0);
-    my_printf("Line chosen: %d\n", line);
     matches = get_matches(nb_sticks, &line, largest_unbalanced);
     if (matches <= 0 || matches > max_matches)
         return (0);
