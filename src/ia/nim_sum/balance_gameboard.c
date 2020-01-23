@@ -47,7 +47,7 @@ static int get_matches(int nb_sticks[], int *line, int largest_u)
     int save_nb_sticks = nb_sticks[*line];
 
     nb_sticks[*line] -= matches;
-    while ((balance = get_balance(nb_sticks)) != 0) {
+    while (get_balance(nb_sticks) != 0) {
         nb_sticks[*line] -= 1;
         matches += 1;
         if (nb_sticks[*line] == 0) {
