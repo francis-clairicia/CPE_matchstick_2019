@@ -42,7 +42,7 @@ static int get_matches(int nb_sticks[], int *line, int largest_u)
     int default_matches = get_default_matches(balance, largest_u);
     int matches = default_matches;
     int save_nb_sticks = nb_sticks[*line];
-    
+
     nb_sticks[*line] -= matches;
     while (get_balance(nb_sticks) != 0) {
         nb_sticks[*line] -= 1;
