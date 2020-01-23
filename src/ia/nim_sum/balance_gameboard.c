@@ -43,8 +43,7 @@ static void next_matchstick_line(int const nb_sticks[], int *line, int l_u)
 static int get_matches(int nb_sticks[], int *line, int largest_u)
 {
     int balance = get_balance(nb_sticks);
-    int default_matches = get_default_matches(nb_sticks[*line], largest_u);
-    int matches = default_matches;
+    int matches = get_default_matches(nb_sticks[*line], largest_u);
     int save_nb_sticks = nb_sticks[*line];
 
     nb_sticks[*line] -= matches;
@@ -55,7 +54,7 @@ static int get_matches(int nb_sticks[], int *line, int largest_u)
             nb_sticks[*line] = save_nb_sticks;
             next_matchstick_line(nb_sticks, line, largest_u);
             save_nb_sticks = nb_sticks[*line];
-            matches = default_matches;
+            matches = get_default_matches(nb_sticks[*line], largest_u);
             nb_sticks[*line] -= matches;
         }
         if (nb_sticks[*line] < 0)

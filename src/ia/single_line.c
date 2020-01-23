@@ -21,10 +21,12 @@ void play_single_line(input_t *input, int const nb_sticks[], int max_matches)
     int last_line = find_the_last_line(nb_sticks);
 
     input->line = last_line;
-    if (nb_sticks[last_line] <= max_matches)
+    if ((nb_sticks[last_line] - 1) <= max_matches)
         input->matches = nb_sticks[last_line] - 1;
     else
-        input->matches = max_matches;
-    if (input->matches == 0)
+        input->matches = nb_sticks[last_line] - max_matches - 1;
+    if (input->matches <= 0)
         input->matches = 1;
+    else if (input->matches > max_matches)
+        input->matches = max_matches;
 }
