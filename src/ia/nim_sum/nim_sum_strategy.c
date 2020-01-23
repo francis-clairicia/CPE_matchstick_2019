@@ -29,15 +29,13 @@ int break_the_strategy(input_t *input, int const nb_sticks[], int max_matches)
 int nim_sum_strategy(input_t *input, int const nb_sticks[], int max_matches)
 {
     int balance = 0;
-    int copy_sticks[array_size(nb_sticks) + 1];
 
     input->line = 1;
     input->matches = 1;
     if (break_the_strategy(input, nb_sticks, max_matches))
         return (1);
     balance = get_balance(nb_sticks);
-    copy_array(copy_sticks, nb_sticks);
     if (balance != 0)
-        return (balance_gameboard(input, copy_sticks, max_matches));
+        return (balance_gameboard(input, nb_sticks, max_matches));
     return (0);
 }

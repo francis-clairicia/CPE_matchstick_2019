@@ -16,14 +16,14 @@ static int get_max_of_mask(int balance)
     return (mask);
 }
 
-int find_largest_balance(int balance, int value)
+int find_largest_unbalanced(int balance)
 {
     int mask = 1;
     int max_mask = get_max_of_mask(balance);
     int largest = 0;
 
     do {
-        while ((balance & mask) != (mask * value) && mask <= max_mask)
+        while ((balance & mask) == 0 && mask <= max_mask)
             mask = mask << 1;
         if (mask <= max_mask)
             largest = mask;

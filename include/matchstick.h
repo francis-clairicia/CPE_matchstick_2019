@@ -59,8 +59,8 @@ int random_match(int nb_matches_in_line, int max_nb_matches_per_turn);
 
 int nim_sum_strategy(input_t *input, int const nb_sticks[], int max_matches);
 int get_balance(int const nb_sticks[]);
-int find_largest_balance(int balance, int value);
-int balance_gameboard(input_t *input, int nb_sticks[], int max_matches);
+int find_largest_unbalanced(int balance);
+int balance_gameboard(input_t *input, int const nb_sticks[], int max_matches);
 
 int array_size(int const *nb_sticks);
 int *copy_array(int *dest, int const *src);
