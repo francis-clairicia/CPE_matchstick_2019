@@ -13,7 +13,7 @@ int get_balance(int const nb_sticks[])
     int i = 1;
 
     while (nb_sticks[i] != END_OF_INT_TAB) {
-        balance ^= nb_sticks[i];
+        balance = balance ^ nb_sticks[i];
         i += 1;
     }
     return (balance);
