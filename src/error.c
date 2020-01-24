@@ -14,30 +14,26 @@ int error_invalid_input(char *line)
     return (0);
 }
 
-int error_line_out_of_range(char *line)
+int error_line_out_of_range(void)
 {
-    free(line);
     my_printf("Error: this line is out of range\n");
     return (0);
 }
 
-int error_not_enough_matches(char *line)
+int error_not_enough_matches(void)
 {
-    free(line);
     my_printf("Error: not enough matches on this line\n");
     return (0);
 }
 
-int error_at_least_one_match(char *line)
+int error_at_least_one_match(void)
 {
-    free(line);
     my_printf("Error: you have to remove at least one match\n");
     return (0);
 }
 
-int error_too_many_matches(char *line, int max_nb_matches)
+int error_too_many_matches(int max_nb_matches)
 {
-    free(line);
     my_printf("Error: you cannot remove more than %d matches per turn\n",
         max_nb_matches);
     return (0);

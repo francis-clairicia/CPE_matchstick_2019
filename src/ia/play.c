@@ -37,5 +37,4 @@ void ia_playing(gameboard_t gameboard, input_t *input)
         input->line = random_line(nb_lines, nb_sticks);
         input->matches = random_match(nb_sticks[input->line], max_matches);
     }
-    print_action("AI", *input);
 }

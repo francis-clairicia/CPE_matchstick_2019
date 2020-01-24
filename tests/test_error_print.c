@@ -23,7 +23,7 @@ Test(error_line_out_of_range, called_when_the_input_was_invalid)
     char error[] = "Error: this line is out of range\n";
 
     cr_redirect_stdout();
-    error_line_out_of_range(NULL);
+    error_line_out_of_range();
     cr_assert_stdout_eq_str(error);
 }
 
@@ -32,7 +32,7 @@ Test(error_at_least_one_match, called_when_the_input_was_invalid)
     char error[] = "Error: you have to remove at least one match\n";
 
     cr_redirect_stdout();
-    error_at_least_one_match(NULL);
+    error_at_least_one_match();
     cr_assert_stdout_eq_str(error);
 }
 
@@ -41,7 +41,7 @@ Test(error_not_enough_matches, called_when_the_input_was_invalid)
     char error[] = "Error: not enough matches on this line\n";
 
     cr_redirect_stdout();
-    error_not_enough_matches(NULL);
+    error_not_enough_matches();
     cr_assert_stdout_eq_str(error);
 }
 
@@ -50,6 +50,6 @@ Test(error_too_many_matches, called_when_the_input_was_invalid)
     char error[] = "Error: you cannot remove more than 5 matches per turn\n";
 
     cr_redirect_stdout();
-    error_too_many_matches(NULL, 5);
+    error_too_many_matches(5);
     cr_assert_stdout_eq_str(error);
 }
