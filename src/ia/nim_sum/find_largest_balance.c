@@ -7,27 +7,17 @@
 
 #include "matchstick.h"
 
-static int get_max_of_mask(int balance)
-{
-    int mask = 1;
-
-    while (mask <= balance)
-        mask = mask << 1;
-    return (mask);
-}
-
 int find_largest_unbalanced(int balance)
 {
     int mask = 1;
-    int max_mask = get_max_of_mask(balance);
     int largest = 0;
 
     do {
-        while ((balance & mask) == 0 && mask <= max_mask)
+        while ((balance & mask) == 0 && mask <= balance)
             mask = mask << 1;
-        if (mask <= max_mask)
+        if (mask <= balance)
             largest = mask;
         mask = mask << 1;
-    } while (mask <= max_mask);
+    } while (mask <= balance);
     return (largest);
 }
